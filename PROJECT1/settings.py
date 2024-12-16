@@ -41,17 +41,19 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'users',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'employees'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'PROJECT1.urls'
@@ -133,6 +135,25 @@ AUTHENTICATION_BACKEND = [
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
     ],
 }
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_NAME = "sessionid"  # Đảm bảo tên cookie là 'sessionid'
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # Cookie sẽ tồn tại 7 ngày
+
+# Thêm các cấu hình bảo mật
+#CSRF_COOKIE_HTTPONLY = False
+#CSRF_COOKIE_NAME = 'csrftoken' 
+#CSRF_COOKIE_SECURE = False  # Nếu dùng HTTPS thì đặt True
+#SESSION_COOKIE_SECURE = False  # Nếu dùng HTTPS thì đặt True
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+#ALLOWED_HOSTS = ['10.13.47.160', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']

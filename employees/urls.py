@@ -1,7 +1,9 @@
 from django.urls import path 
 from rest_framework.routers import DefaultRouter
-
-from .views import (
+from users.views import(
+    RegisterView, LoginView
+)
+from home.views import (
     RoomListView, AvailableRoomListView, BookingCreateView, 
     BookingHistoryView, RoomCreateView, RoomDetailView, RoleCheckView
 )
@@ -14,6 +16,6 @@ urlpatterns = [
     path('rooms/add/', RoomCreateView.as_view(), name='add-room'),
     path('rooms/<int:pk>', RoomDetailView.as_view(), name='room-detail'),
     path('role/', RoleCheckView.as_view(), name='role-check'),
-
+    path('login/',LoginView.as_view(), name='login'),
+    path('register/',LoginView.as_view(), name='register'),
     ]
-
