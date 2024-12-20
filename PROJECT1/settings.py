@@ -143,9 +143,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-SESSION_COOKIE_NAME = "sessionid"  # Đảm bảo tên cookie là 'sessionid'
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # Cookie sẽ tồn tại 7 ngày
+#SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+#SESSION_COOKIE_NAME = "sessionid"  # Đảm bảo tên cookie là 'sessionid'
+#SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # Cookie sẽ tồn tại 7 ngày
 
 # Thêm các cấu hình bảo mật
 #CSRF_COOKIE_HTTPONLY = False
@@ -155,5 +155,5 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # Cookie sẽ tồn tại 7 ngày
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
-#ALLOWED_HOSTS = ['10.13.47.160', '127.0.0.1', '*']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['10.13.48.244', '127.0.0.1', '*']
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
